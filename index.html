@@ -368,6 +368,9 @@
     font-weight: 800;
     color: var(--accent-2);
   }
+  .field-result-sep{
+    opacity: 0.5;
+  }
 
   /* ---------- results ---------- */
   .results{ padding: 16px; display: flex; flex-direction: column; gap: 10px; }
@@ -762,6 +765,7 @@
     var ticket = state.ticketMedio;
 
     var leads = investimento / precoLead;
+    var leadsPorDia = leads / 30;
     var agendamentos = Math.round(leads * pAgendamento);
     var comparecimentos = Math.round(agendamentos * pComparecimento);
     var vendas = Math.round(comparecimentos * pConversao);
@@ -782,7 +786,7 @@
     document.getElementById('outSdrs').textContent = fmtInt(sdrs);
     document.getElementById('outClosers').textContent = fmtInt(closers);
 
-    document.getElementById('res-leads').innerHTML = '≈ <b>' + fmtInt(leads) + '</b> leads/mês';
+    document.getElementById('res-leads').innerHTML = '≈ <b>' + fmtInt(leads) + '</b> leads/mês <span class="field-result-sep">·</span> <b>' + fmtInt(leadsPorDia) + '</b> leads/dia';
     document.getElementById('res-agendamentos').innerHTML = '≈ <b>' + fmtInt(agendamentos) + '</b> agendamentos/mês';
     document.getElementById('res-comparecimentos').innerHTML = '≈ <b>' + fmtInt(comparecimentos) + '</b> comparecimentos/mês';
     document.getElementById('res-vendas').innerHTML = '≈ <b>' + fmtInt(vendas) + '</b> vendas/mês';
